@@ -27,7 +27,7 @@ export default function HomeScreen() {
                           <ChevronDownIcon size={20} color="#00cc88" />
                       </Text>
                   </View>
-                  <UserIcon className="absolute inset-y-0 right-0" size={35} color="#00cc88" />
+                  <UserIcon size={35} color="#00cc88" />
               </View>
           </Text>
           
