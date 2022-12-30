@@ -2,7 +2,7 @@ import { View, Text, Image} from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronDownIcon, UserIcon } from 'react-native-heroicons/outline';
+import { AdjustmentsHorizontalIcon, ChevronDownIcon, UserIcon } from 'react-native-heroicons/outline';
 
 export default function HomeScreen() {
     const navigation = useNavigation();
@@ -12,7 +12,7 @@ export default function HomeScreen() {
         });
     }, [navigation]);
   return (
-    <SafeAreaView>
+    <SafeAreaView className="bg-white pt-4">
           <Text>
               {/** Header */}
               <View className=" flex-row pb-3 items-center mx-4 space-x-2">
@@ -27,7 +27,14 @@ export default function HomeScreen() {
                           <ChevronDownIcon size={20} color="#00cc88" />
                       </Text>
                   </View>
-                  <UserIcon size={35} color="#00cc88" />
+                  <View className=" place-self-end">
+                      <UserIcon  size={35} color="#00cc88" />
+                  </View>
+              </View>
+              {/* Search Bar */}
+              <View>
+                  <View></View>
+                  <AdjustmentsHorizontalIcon size={20} color="#00cc88" />
               </View>
           </Text>
           
