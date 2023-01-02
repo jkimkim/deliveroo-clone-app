@@ -22,7 +22,7 @@ export default function HomeScreen() {
             {/** Header */}
             <View className=" flex flex-row pb-3 items-center mx-4 space-x-2">
                 <Image
-                    source={{ uri: "https://links.papareact.com/3pn" }}
+                    source={{ uri: "https://jkimtech.web.app/044af99d3d73bd9f8ba8.png" }}
                     className="h-7 w-7 bg-slate-300 rounded-full p-4 px-4"
                 />
                 <View className=" flex flex-1">

@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native'
+import { View, Text,ScrollView } from 'react-native'
 import React from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
+
 import CategoriesCard from './CategoriesCard'
 
 const Categories = () => {
@@ -13,7 +13,7 @@ const Categories = () => {
       }}
       horizontal
       showsHorizontalScrollIndicator={false}>
-      <CategoriesCard imgUrl='https://links.papareact.com/3pn' title='Testing' />
+      <CategoriesCard imgUrl='https://jkimtech.web.app/044af99d3d73bd9f8ba8.png' title='Testing' />
       <CategoriesCard imgUrl='https://links.papareact.com/3pn' title='Testing'/>
       <CategoriesCard imgUrl='https://links.papareact.com/3pn' title='Testing'/>
     </ScrollView>
