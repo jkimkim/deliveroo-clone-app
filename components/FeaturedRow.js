@@ -6,7 +6,7 @@ import RestaurantCard from './RestaurantCard'
 const FeaturedRow = ({id, title, description}) => {
   return (
     <View>
-          <View className="mt-4 flex flex-row justify-center justify-between px-4">
+          <View className="mt-4 flex flex-row  justify-between px-4">
               <Text className="text-bold text-lg">{title}</Text>
               <ArrowRightIcon color="#00cc88" />
           </View>
