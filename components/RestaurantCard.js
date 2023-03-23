@@ -1,6 +1,9 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { StarIcon } from 'react-native-heroicons/outline'
+import {
+  StarIcon,
+  MapPinIcon
+} from 'react-native-heroicons/outline'
 
 const RestaurantCard = ({
   id,
@@ -15,7 +18,7 @@ const RestaurantCard = ({
   lat,
 }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity className='bg-white mr-3 shadow-sm'>
       <Image
         source={{ uri: imgUrl }}
         className="h-36 w-64 rounded-sm"
@@ -32,7 +35,8 @@ const RestaurantCard = ({
           </Text>
         </View>
 
-        <View>
+        <View className='flex flex-row items-center space-x-1'>
+          <MapPinIcon color="green" opacity={0.5} size={22} />
           <Text className="text-gray-400 text-xs">
             {address}
           </Text>
