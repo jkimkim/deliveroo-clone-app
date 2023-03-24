@@ -59,14 +59,14 @@ export default function HomeScreen() {
                 {/** Tasty discounts */}
                 <FeaturedRow
                     id="123"
-                    title="Featured"
+                    title="Top Discounts"
                     description="Explore the best restaurants in your area"
                 />
 
                 {/** Offers near you */}
-                <FeaturedRow
+                <FeaturedRow className="mb-4"
                     id="1234"
-                    title="Featured"
+                    title="Offers Near You"
                     description="Explore the best restaurants in your area"
                 />
 
