@@ -68,9 +68,7 @@ export default function HomeScreen() {
                     id="1234"
                     title="Offers Near You"
                     description="Explore the best restaurants in your area"
-                />
-
-                
+                />               
             </ScrollView>
         </SafeAreaView>
     )
