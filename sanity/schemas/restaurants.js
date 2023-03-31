@@ -45,7 +45,6 @@ export default defineType({
       validation: (Rule) => Rule.required()
         .min(1)
         .max(5)
-        .precision(1)
       .error('Rating must be between 1 and 5'),
     },
     {
