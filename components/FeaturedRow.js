@@ -1,9 +1,31 @@
 import { View, Text, ScrollView, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import RestaurantCard from './RestaurantCard'
+import client from '../sanity'
 
 const FeaturedRow = ({ id, title, description }) => {
+  const [restaurants, setRestaurants] = useState([])
+
+  useEffect(() => {
+    client.fetch(`
+      *[_type == "featured" && _id == $id] {
+        ...,
+        restaurants[]->{
+          ...,
+          dishes[]->,
+          type->{
+            ...,
+          }
+        },
+      }[0]
+    `,
+    {id}
+    ).then(data => {
+      setRestaurants(data?.restaurants)
+    })
+  }, [])
+
   return (
     <View>
       <View className="mt-4 flex flex-row  justify-between px-4">
@@ -16,96 +38,25 @@ const FeaturedRow = ({ id, title, description }) => {
         contentContainerStyle={{ paddingHorizontal: 15, }}
       >
         {/** Restaurant cards */}
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
 
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
+        {
+          restaurants?.map((restaurant) => (
+            <RestaurantCard
+              key={restaurant._id}
+              id={restaurant._id}
+              imgUrl={restaurant.image}
+              title={restaurant.name}
+              rating={restaurant.rating}
+              genre={restaurant.type?.name}
+              address={restaurant.address}
+              short_desc={restaurant.short_desc}
+              dishes={restaurant.dishes}
+              long={restaurant.long}
+              lat={restaurant.lat}
+            />
+          ))
+        }
 
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
-
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
-
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
-
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
-
-        <RestaurantCard
-          id={1}
-          imgUrl="https://jkimtech.web.app/044af99d3d73bd9f8ba8.png"
-          title="Restaurant 1"
-          rating="4.5"
-          genre="American"
-          address="123 Main St"
-          short_desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          dishes={["Lorem ipsum "]}
-          long={123}
-          lat={123}
-        />
       </ScrollView>
     </View>
   )
